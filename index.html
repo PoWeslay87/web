@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="id">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Terjemahan Nduga (Papua)</title>
+        <meta
+            name="description"
+            content="Aplikasi penerjemah Bahasa Indonesia ke Bahasa Nduga (Papua)"
+        />
+
+        <script src="https://cdn.tailwindcss.com"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body
+        class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 min-h-screen"
+    >
+        <!-- Main Container -->
+        <div class="container mx-auto px-4 py-8 max-w-5xl">
+            <!-- Header -->
+            <header class="text-center mb-10">
+                <div class="inline-flex items-center gap-3 mb-3">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl flex items-center justify-center"
+                    >
+                        <span class="text-white text-xl">🏔️</span>
+                    </div>
+                    <h1 class="text-4xl font-bold text-white">
+                        Terjemahan Nduga
+                    </h1>
+                </div>
+                <p class="text-gray-300 text-base">
+                    Bahasa Indonesia ↔ Bahasa Papua (Nduga)
+                </p>
+            </header>
+
+            <!-- Translation Card -->
+            <div
+                class="bg-slate-800/80 backdrop-blur-sm rounded-3xl shadow-2xl p-8 mb-8 border border-slate-700/50"
+            >
+                <!-- Language Selector -->
+                <div class="flex items-center justify-center gap-6 mb-8">
+                    <div
+                        class="flex items-center gap-2 bg-slate-700/50 px-5 py-3 rounded-2xl border border-slate-600/30"
+                    >
+                        <span class="text-2xl">🇮🇩</span>
+                        <span
+                            id="lang-from"
+                            class="text-lg font-semibold text-slate-200"
+                        >
+                            Indonesia
+                        </span>
+                    </div>
+
+                    <!-- Swap Button -->
+                    <button
+                        id="swap-btn"
+                        class="p-3 bg-gradient-to-r from-pink-500 to-pink-600 text-white rounded-2xl hover:scale-105 shadow-md"
+                        title="Tukar bahasa"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="2.5"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
+                            />
+                        </svg>
+                    </button>
+
+                    <div
+                        class="flex items-center gap-2 bg-slate-700/50 px-5 py-3 rounded-2xl border border-slate-600/30"
+                    >
+                        <span class="text-2xl">🏔️</span>
+                        <span
+                            id="lang-to"
+                            class="text-lg font-semibold text-slate-200"
+                        >
+                            Nduga
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Translation Areas -->
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <!-- Input Area -->
+                    <div class="relative">
+                        <div class="flex items-center justify-between mb-3">
+                            <label class="text-sm font-medium text-slate-300">
+                                Masukkan Teks
+                            </label>
+                            <span class="text-xs text-slate-400" id="char-count"
+                                >0 karakter</span
+                            >
+                        </div>
+                        <textarea
+                            id="input-text"
+                            class="w-full h-64 p-4 bg-slate-700/50 border-2 border-slate-600/50 rounded-2xl focus:border-pink-500 focus:bg-slate-700 focus:outline-none resize-none text-base text-slate-200 placeholder-slate-400"
+                            placeholder="Ketik atau tempel teks di sini..."
+                        ></textarea>
+                        <button
+                            id="clear-btn"
+                            class="absolute bottom-4 right-4 px-4 py-2 bg-slate-600 text-white rounded-xl hover:bg-slate-700 text-sm font-medium shadow-md"
+                        >
+                            Hapus
+                        </button>
+                    </div>
+
+                    <!-- Output Area -->
+                    <div class="relative">
+                        <label
+                            class="block text-sm font-medium text-slate-300 mb-3"
+                        >
+                            Hasil Terjemahan
+                        </label>
+                        <div
+                            id="output-text"
+                            class="w-full h-64 p-4 bg-slate-700/30 border-2 border-slate-600/50 rounded-2xl overflow-y-auto text-base text-slate-200"
+                        >
+                            <p class="text-slate-400 text-sm">
+                                Hasil terjemahan akan muncul di sini...
+                            </p>
+                        </div>
+                        <button
+                            id="copy-btn"
+                            class="absolute bottom-4 right-4 px-4 py-2 bg-pink-500 text-white rounded-xl hover:bg-pink-600 text-sm font-medium shadow-md"
+                        >
+                            Salin
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Translate Button -->
+                <div class="text-center">
+                    <button
+                        id="translate-btn"
+                        class="px-10 py-4 bg-gradient-to-r from-pink-500 to-pink-600 text-white text-base font-semibold rounded-2xl hover:scale-105 shadow-lg"
+                    >
+                        Terjemahkan
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Info -->
+            <div
+                class="bg-slate-800/80 backdrop-blur-sm rounded-3xl shadow-2xl p-6 mb-8 border border-slate-700/50"
+            >
+                <div class="grid grid-cols-3 gap-4 text-center">
+                    <div class="p-4">
+                        <p
+                            class="text-3xl font-bold text-pink-500"
+                            id="word-count"
+                        >
+                            5,247
+                        </p>
+                        <p class="text-sm text-slate-300 mt-1">
+                            Kata dalam Kamus
+                        </p>
+                    </div>
+                    <div class="p-4">
+                        <p
+                            class="text-3xl font-bold text-pink-500"
+                            id="translation-count"
+                        >
+                            0
+                        </p>
+                        <p class="text-sm text-slate-300 mt-1">
+                            Terjemahan Hari Ini
+                        </p>
+                    </div>
+                    <div class="p-4">
+                        <p class="text-3xl font-bold text-pink-500">100%</p>
+                        <p class="text-sm text-slate-300 mt-1">Gratis</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <footer class="text-center">
+                <p class="text-sm text-gray-300">
+                    Dibuat dengan ❤️ untuk melestarikan Bahasa Nduga (Papua)
+                </p>
+                <p class="text-xs text-gray-400 mt-2">
+                    © 2026 Terjemahan Nduga
+                </p>
+            </footer>
+        </div>
+
+        <!-- JavaScript -->
+        <script src="script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Smooth transitions */
+* {
+    transition: all 0.2s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f8f9fa;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #e91e63;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #c2185b;
+}
